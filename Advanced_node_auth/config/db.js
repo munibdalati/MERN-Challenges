@@ -1,12 +1,33 @@
+// const mongoose = require("mongoose");
+
+// const connectDB = async () => {
+//   await mongoose.connect(process.env.MONGO_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   });
+
+//   console.log("MongoDB connected");
+// };
+
+// module.exports = connectDB;
+
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
-  await mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+ 
 
-  console.log("MongoDB connected");
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log("MongoDB connected");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error.message);
+    console.log("not connect");
+  }
+
 };
 
 module.exports = connectDB;
